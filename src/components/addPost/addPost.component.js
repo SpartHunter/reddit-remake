@@ -62,10 +62,6 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
         console.log(event.target.file);
     };
 
-    let RegisterButtom = () => {
-
-    };
-
     let registerPost = () => {
         console.log("userconnect value:", userConnect.connected);
 
@@ -88,6 +84,8 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
            };
             addPostData(dataRegister);
             console.log("addPostData called by registerPost");
+            funcOpenPost();
+            console.log("close addPost after post send");
         }
     };
 
@@ -126,7 +124,9 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
                     <BoxComment name="commentPost" value={resumePostArea} placeholder="Enter Your comment's ..." onChange={registerCommentArea}> </BoxComment>
                 </BoxDiv>
                 <BoxDiv>
-
+                    {
+                        (newPost === "block")? (userConnect ? (<ButtonSubmit onClick={registerPost}>Submit</ButtonSubmit>) : (<Redirect to="/login"/>)) : (console.log("newPost never call: ", newPost))
+                    }
                 </BoxDiv>
             </AddPostForm>
         </AddPostContent>

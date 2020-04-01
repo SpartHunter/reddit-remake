@@ -1,9 +1,8 @@
 import React from 'react';
 import Styled from 'styled-components';
 import ProfilPost from '../user/user.component';
-import AllPost from '../../Data/post.json'
 
-function UserPost({userConnect}){
+function UserPost({postData, userConnect}){
 
     let allImport = (fileReq) => {
         return fileReq.keys().map(fileReq);
@@ -32,7 +31,7 @@ function UserPost({userConnect}){
         return url;
     };
 
-    for(const data of AllPost){
+    for(const data of postData){
         if(data.postType === "Text"){
             post.push(
                 <UserPostContent>

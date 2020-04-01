@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {Redirect} from 'react-router-dom';
 import Styled from 'styled-components';
 
-function AddPost({newPost, funcOpenPost}){
+function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
 
     const [closeBtn, setCloseBtn] = useState("none");
 
@@ -24,13 +25,6 @@ function AddPost({newPost, funcOpenPost}){
         setPostTitle(event.target.value)
     };
 
-    let registerPostArea = (event) => {
-        setTextPostArea(event.target.value);
-    };
-
-    let registerCommentArea = (event) => {
-        setResumePostArea(event.target.value);
-    };
 
     let closeBtnAct = (event) =>{
         console.log("oyé closeBtnAct");
@@ -46,6 +40,16 @@ function AddPost({newPost, funcOpenPost}){
        }
     };
 
+    let registerPostArea = (event) => {
+        console.log("registerPostArea called by onchange textarea");
+        setTextPostArea(event.target.value);
+    };
+
+    let registerCommentArea = (event) => {
+        console.log("registerCommentArea called by onchange comment textarea");
+        setResumePostArea(event.target.value);
+    };
+
     let registerPostImg = (event) => {
         console.log("image input value changed");
         setPostImg(event.target.files);
@@ -58,11 +62,35 @@ function AddPost({newPost, funcOpenPost}){
         console.log(event.target.file);
     };
 
-    let registerPost = () => {
-        if (defaultTypePost === "Text"){
+    let RegisterButtom = () => {
 
+    };
+
+    let registerPost = () => {
+        console.log("userconnect value:", userConnect.connected);
+
+        console.log("enter to registerPost, receved signale");
+        if (defaultTypePost === "Text"){
+            if(userConnect.connected === undefined){
+                console.log("Enter to if connected test!");
+                return <Redirect to="/login"/>;
+            }
+            console.log("enter to registerPost if fonction, receved signale");
+           let dataRegister = {
+               "userPost": userConnect.pseudo,
+               "groupPost": userConnect.jointGroup,
+               "titlePost": postTitle,
+               "postText": textPostArea,
+               "postImg": "",
+               "postVideo": "",
+               "postComment": resumePostArea,
+               "postType": defaultTypePost
+           };
+            addPostData(dataRegister);
+            console.log("addPostData called by registerPost");
         }
     };
+
 
     return (
         <AddPostContent value={newPost}>
@@ -98,7 +126,7 @@ function AddPost({newPost, funcOpenPost}){
                     <BoxComment name="commentPost" value={resumePostArea} placeholder="Enter Your comment's ..." onChange={registerCommentArea}> </BoxComment>
                 </BoxDiv>
                 <BoxDiv>
-                    <ButtonSubmit onClick={registerPost}>Submit</ButtonSubmit>
+
                 </BoxDiv>
             </AddPostForm>
         </AddPostContent>
@@ -129,7 +157,7 @@ const TextH = Styled.h1`
     border-radius: 10px;
 `;
 
-const AddPostForm = Styled.form`
+const AddPostForm = Styled.div`
     padding: 9px;
     border: 1px solid #ff4500;
     border-radius: 18px;

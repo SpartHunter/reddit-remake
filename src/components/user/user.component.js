@@ -8,7 +8,7 @@ function User({groupPost, userConnected}){
         <UserContent>
             <UserView>
                 <UserImg src={ProfilImg} alt=""/>
-                <UserH4>R/BOB-ALBERTO</UserH4>
+                <UserH4>R/{groupPost}</UserH4>
             </UserView>
         </UserContent>
     );

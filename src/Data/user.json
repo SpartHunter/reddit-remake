@@ -4,7 +4,7 @@
     "lastName": "Nordf",
     "pseudo": "albert",
     "password": "0000",
-    "jointGroup": ["InfoNews","PeopleFake", "kellyDance"],
+    "jointGroup": "InfoNews",
     "connected": false
   }
 ]

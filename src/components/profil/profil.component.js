@@ -6,31 +6,38 @@ function Profil({newPost, funcOpenPost, logInStatus}){
 
 
 
-    const [profilOpen, setProfilOpen ]= useState("none");
+    const [profilOpen, setProfilOpen ] = useState("none");
 
     const profilHandler = () => {
         console.log("entered profil handler");
-        if (profilOpen === "none"){
-            console.log("entered to if of profil handler");
-            return setProfilOpen("flex")
-        } else {
-            console.log("entered to else of profil handler");
-            return setProfilOpen("none")
-        }
+        return setProfilOpen("flex")
     };
 
+
+    const closeProfileHandler = () => {
+        console.log("entered to closeProfileHandler of profile handler");
+        return setProfilOpen("none")
+    };
+
+
+    let PostHandlerClick = () => {
+        closeProfileHandler();
+        funcOpenPost();
+    };
+
+
     return (
-        <ProfilNav onMouseEnter={profilHandler} onMouseLeave={profilHandler}>
-            <Content onMouseUp={profilHandler}>
+        <ProfilNav onMouseEnter={profilHandler} onClick={profilHandler} onMouseLeave={closeProfileHandler}>
+            <Content>
                 <SpanUser><svg fill="gray" width="20" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1536 1399q0 109-62.5 187t-150.5 78h-854q-88 0-150.5-78t-62.5-187q0-85 8.5-160.5t31.5-152 58.5-131 94-89 134.5-34.5q131 128 313 128t313-128q76 0 134.5 34.5t94 89 58.5 131 31.5 152 8.5 160.5zm-256-887q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg></SpanUser>
                 <SpanSpacer> </SpanSpacer>
                 <SpanCursor><svg fill="gray" width="20" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z"/></svg></SpanCursor>
             </Content>
-            <ProfilDrop opened={profilOpen} onMouseLeave={profilHandler} >
-                <DropLink href="#" onMouseUp={profilHandler}>Profil</DropLink>
-                <DropLink value={newPost} onClick={funcOpenPost} onMouseUp={profilHandler} href="#">Post</DropLink>
-                <Link to={logInStatus ? ("/") : ("/login")} onMouseUp={profilHandler}>Login</Link>
-                <DropLink href="#" onMouseUp={profilHandler}>Logout</DropLink>
+            <ProfilDrop opened={profilOpen} onMouseLeave={closeProfileHandler} >
+                <DropLink href="#" onMouseUp={closeProfileHandler}>Profile</DropLink>
+                <DropLink value={newPost} onClick={PostHandlerClick} onMouseUp={closeProfileHandler} href="#">Post</DropLink>
+                <Link to={logInStatus ? ("/") : ("/login")} onMouseUp={closeProfileHandler}>Login</Link>
+                <DropLink href="#" onMouseUp={closeProfileHandler}>Logout</DropLink>
             </ProfilDrop>
         </ProfilNav>
     );

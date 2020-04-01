@@ -1,0 +1,33 @@
+[
+  {
+    "userPost": "Mick-Mick",
+    "groupPost": "Linux-Experience",
+    "titlePost": "Best fedora linux",
+    "postText": "Fedora est un système d’exploitation libre et une distribution GNU/Linux communautaire développée par le projet Fedora et sponsorisée par l’entreprise Red Hat, qui lui fournit des développeurs ainsi que des moyens financiers et logistiques. Fedora est prompte à inclure des nouveautés et peut être considérée comme une vitrine technologique pour le monde du logiciel libre, auquel elle contribue largement via les projets amont tels que le noyau Linux, GNOME, NetworkManager, PackageKit, PulseAudio, Wayland, la célèbre suite de compilateurs GCC et bien d’autres. Tous les six mois une nouvelle version sort ; elle est maintenue treize mois. ",
+    "postImg": "",
+    "postVideo": "",
+    "postComment": "Ma superbe histoire avec fedora",
+    "postType": "Text"
+  },
+  {
+    "userPost": "Wc-kill",
+    "groupPost": "NewCiné",
+    "titlePost": "People not Me",
+    "postText": "",
+    "postImg": "peopleNotMe",
+    "postVideo": "",
+    "postComment": "Un film avoir absolument, belle intrigue, histoire de ouf.",
+    "postType": "Image"
+  },
+  {
+    "userPost": "Comics-Hash",
+    "groupPost": "GagsForYou",
+    "titlePost": "Best Gag from Papy",
+    "postText": "",
+    "postImg": "",
+    "postVideo": "humour",
+    "postComment": "Only one man can do it, this is best gag action an papy",
+    "postType": "Video"
+
+  }
+]

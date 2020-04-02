@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import Styled from 'styled-components';
 
-function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
+function AddPost({newPost, addPostData, postData, userConnect, funcOpenPost}){
 
     const [closeBtn, setCloseBtn] = useState("none");
 
@@ -62,6 +62,16 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
         console.log(event.target.file);
     };
 
+    let generateId = () => {
+        let newId = Math.floor(Math.random() * 10);
+        for(const data of postData){
+            while(data.postId === newId){
+                newId = Math.floor(Math.random() * 10);
+            }
+        }
+        return newId;
+    };
+
     let registerPost = () => {
         console.log("userconnect value:", userConnect.connected);
 
@@ -71,8 +81,10 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
                 console.log("Enter to if connected test!");
                 return <Redirect to="/login"/>;
             }
+            let randomId = generateId();
             console.log("enter to registerPost if fonction, receved signale");
            let dataRegister = {
+               "postId":randomId,
                "userPost": userConnect.pseudo,
                "groupPost": userConnect.jointGroup,
                "titlePost": postTitle,
@@ -80,7 +92,9 @@ function AddPost({newPost, addPostData, userConnect, funcOpenPost}){
                "postImg": "",
                "postVideo": "",
                "postComment": resumePostArea,
-               "postType": defaultTypePost
+               "postType": defaultTypePost,
+               "upVote": 0,
+               "downVote": 0
            };
             addPostData(dataRegister);
             console.log("addPostData called by registerPost");

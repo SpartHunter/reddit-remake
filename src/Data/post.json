@@ -1,5 +1,6 @@
 [
   {
+    "postId": 1,
     "userPost": "Mick-Mick",
     "groupPost": "Linux-Experience",
     "titlePost": "Best fedora linux",
@@ -7,9 +8,12 @@
     "postImg": "",
     "postVideo": "",
     "postComment": "Ma superbe histoire avec fedora",
-    "postType": "Text"
+    "postType": "Text",
+    "upVote": 1.5,
+    "downVote": 1
   },
   {
+    "postId": 2,
     "userPost": "Wc-kill",
     "groupPost": "NewCiné",
     "titlePost": "People not Me",
@@ -17,9 +21,12 @@
     "postImg": "peopleNotMe",
     "postVideo": "",
     "postComment": "Un film avoir absolument, belle intrigue, histoire de ouf.",
-    "postType": "Image"
+    "postType": "Image",
+    "upVote": 2.0,
+    "downVote": 0.5
   },
   {
+    "postId": 3,
     "userPost": "Comics-Hash",
     "groupPost": "GagsForYou",
     "titlePost": "Best Gag from Papy",
@@ -27,7 +34,9 @@
     "postImg": "",
     "postVideo": "humour",
     "postComment": "Only one man can do it, this is best gag action an papy",
-    "postType": "Video"
+    "postType": "Video",
+    "upVote": 0.8,
+    "downVote": 0.1
 
   }
 ]

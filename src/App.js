@@ -56,10 +56,10 @@ function App() {
             <BrowserRouter>
                 <Route exact path="/">
                     <Header newPost={openAddPost} funcOpenPost={changeOpenPost} logInStatus={logInStatus} logo={Logo}/>
-                    <AddPost newPost={openAddPost} addPostData={addPostData} userConnect={userConnect} funcOpenPost={changeOpenPost}/>
+                    <AddPost newPost={openAddPost} addPostData={addPostData} postData={PostData} userConnect={userConnect} funcOpenPost={changeOpenPost}/>
                     <Pubs/>
                     <FilterBar/>
-                    <UserPost postData={PostData} userConnect={userConnect}/>
+                    <UserPost postData={PostData} updatePostData={addPostData} userConnect={userConnect}/>
                 </Route>
                 <Route exact path="/login" render={() => (
                     logInStatus ? (<Redirect to="/"/>) : (<LogIn loginStatus={logInStatus} funcStatusLogin={statusLogin}/>)
